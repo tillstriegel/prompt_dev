@@ -11,8 +11,8 @@ client = Groq(
     api_key=os.environ.get("GROQ_API_KEY"),
 )
 
-def get_intent(user_prompt):
-    prompt = open("prompts/intent.md", "r").read()
+def get_json(user_prompt):
+    prompt = open("prompts/json.md", "r").read()
 
     response = client.chat.completions.create(
         model="llama-3.2-1b-preview",
@@ -38,8 +38,8 @@ def get_intent(user_prompt):
 if __name__ == "__main__":
   import time
   start = time.time()
-  get_intent("Fasse den Text in wenigen Worten zusammen")
-  get_intent("Alles Wichtige über das kommende Event von Apple")
-  get_intent("Mann mit Schaufel auf einem Feld, schwarz-weiß")
+  get_json("Nenne die 5 wichtigsten Fakten über Napoleon Bonaparte.")
+  get_json("Vergleiche Mac OS und Windows.")
+  get_json("Erstelle eine Liste mit 5 beliebten Restaurants in Berlin.")
   end = time.time()
   print(f"Time taken: {end - start} seconds")
